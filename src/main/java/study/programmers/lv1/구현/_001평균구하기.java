@@ -1,5 +1,5 @@
 class Solution {
-    public double solution(int[] arr) {
+    public double findAvg(int[] arr) {
         double sum = 0;
         
         for(int arrs : arr) {

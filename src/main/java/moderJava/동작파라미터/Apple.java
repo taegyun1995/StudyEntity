@@ -1,11 +1,11 @@
 package moderJava.동작파라미터;
 
-public class Apple {
+public class Apple implements Comparable<Apple> {
 
     private Color color;
-    private int weight;
+    private Integer weight;
 
-    public Apple(Color color, int weight) {
+    public Apple(Color color, Integer weight) {
         this.color = color;
         this.weight = weight;
     }
@@ -14,8 +14,13 @@ public class Apple {
         return color;
     }
 
-    public int getWeight() {
+    public Integer getWeight() {
         return weight;
+    }
+
+    @Override
+    public int compareTo(Apple apple) {
+        return Integer.compare(this.weight, apple.weight);
     }
 
 }

@@ -2,9 +2,11 @@ package moderJava.동작파라미터;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 
+import static java.util.Comparator.*;
 import static moderJava.동작파라미터.Color.GREEN;
 import static moderJava.동작파라미터.Color.RED;
 
@@ -37,6 +39,23 @@ public class FilteringApples {
         List<Apple> result = filterApples(inventory, (Apple apple) -> RED.equals(apple.getColor()));
 
         List<Apple> redApples3 = filter(inventory, (Apple apple) -> RED.equals(apple.getColor()));
+
+        inventory.sort(new Comparator<Apple>() {
+            @Override
+            public int compare(Apple a1, Apple a2) {
+                return a1.getWeight().compareTo(a2.getWeight());
+            }
+        });
+
+        // version1
+        inventory.sort(
+                (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight())
+        );
+        // version2
+        inventory.sort(
+                comparing(Apple::getWeight)
+        );
+
     }
 
     public static List<Apple> filterGreenApples(List<Apple> inventory) {
